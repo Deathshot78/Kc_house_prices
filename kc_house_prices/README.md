@@ -197,7 +197,7 @@ python src/plot_results.py
 
 ## File Structure
 
-├── data/
+<pre>├── data/
 │   └── kc_house_data.csv         # Original dataset
 │   └── kc_house_data_preprocessed.csv # Preprocessed dataset
 ├── notebooks/
@@ -226,4 +226,4 @@ python src/plot_results.py
 ├── .gitignore
 ├── LICENSE
 ├── README.md
-└── requirements.txt
+└── requirements.txt </pre>
