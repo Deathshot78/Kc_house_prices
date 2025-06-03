@@ -20,8 +20,8 @@ BEST_HPARAMS = {
 }
 MAX_EPOCHS_FINAL = 200
 SEED = 42
-PREPROCESSED_CSV_PATH = 'projects/kc_house_prices/data/kc_house_data_preprocessed.csv'
-ROOT_LOG_DIR = "projects/kc_house_prices/logs/lightning_logs" # Root for all experiments
+PREPROCESSED_CSV_PATH = 'data/kc_house_data_preprocessed.csv'
+ROOT_LOG_DIR = "logs/lightning_logs" # Root for all experiments
 
 def train_model(hparams: dict,
                 preprocessed_csv_path: str,

@@ -7,7 +7,7 @@ from model import KcHousePrices
 from data_utils import KcHousePricesDataModule, KcHousepricesDataset
 
 # Paths
-preprocessed_csv_path = 'projects/kc_house_prices/data/kc_house_data_preprocessed.csv'
+preprocessed_csv_path = 'data/kc_house_data_preprocessed.csv'
 
 def objective(trial):
     logging.getLogger("pytorch_lightning").setLevel(logging.WARNING)

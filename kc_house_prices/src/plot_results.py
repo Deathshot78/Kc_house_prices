@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-import glob # Keep for flexibility, though direct path construction is prioritized
 
 # --- Configuration: Set these paths based on your log structure ---
 
@@ -9,7 +8,7 @@ import glob # Keep for flexibility, though direct path construction is prioritiz
 # Set the path to the specific main run directory you want to plot.
 # This is the folder that CONTAINS 'train_logs', 'model_checkpoints', etc.
 # Ensure this path is correct relative to where you run the plotting script, or use an absolute path.
-MAIN_RUN_DIR_TO_PLOT = "projects/kc_house_prices/logs/lightning_logs/kc_house_mlp_final_run_20250603_014431"
+MAIN_RUN_DIR_TO_PLOT = "logs/lightning_logs/kc_house_mlp_final_run_20250603_014431"
 
 TRAINING_LOGS_SUBDIR_NAME = "train_logs"
 # This should match the SEED used in your train_final_model.py script for versioning the CSVLogger
@@ -18,7 +17,7 @@ SEED_VERSION_NAME = "seed42"
 # METHOD 2: (ALTERNATIVE - DIRECT PATH TO CSV)
 # If you want to bypass the find function and point directly to the CSV.
 # Uncomment and use this if Method 1 (using MAIN_RUN_DIR_TO_PLOT) gives trouble.
-# DIRECT_METRICS_CSV_PATH = "projects/kc_house_prices/logs/lightning_logs/kc_house_mlp_final_run_20250603_014431/train_logs/seed42/metrics.csv"
+# DIRECT_METRICS_CSV_PATH = "logs/lightning_logs/kc_house_mlp_final_run_20250603_014431/train_logs/seed42/metrics.csv"
 DIRECT_METRICS_CSV_PATH = None # Set to None to use Method 1 by default
 
 
@@ -97,7 +96,7 @@ def plot_training_validation_metrics(metrics_file_path):
             plt.plot(plot_df_val_loss[x_axis_col], plot_df_val_loss[val_loss_col], label='Validation Loss (Log-space)', linestyle='--')
             plt.xlabel(x_axis_col.capitalize()); plt.ylabel('Loss (Huber, Log-space)')
             plt.title('Training & Validation Loss (Log-Space) vs. Epoch'); plt.legend(); plt.grid(True); plt.tight_layout()
-            plt.savefig("loss_log_space_plot.png"); plt.show()
+            plt.show()
         else: print(f"Not enough data for loss plot.")
     else: print(f"Loss columns not found: train='{train_loss_col}', val='{val_loss_col}'")
 
@@ -112,7 +111,7 @@ def plot_training_validation_metrics(metrics_file_path):
             plt.plot(plot_df_val_mape[x_axis_col], plot_df_val_mape[val_mape_log_col], label='Validation MAPE (Log-space %)', linestyle='--')
             plt.xlabel(x_axis_col.capitalize()); plt.ylabel('MAPE (Log-space %)')
             plt.title('Training & Validation MAPE (Log-Space) vs. Epoch'); plt.legend(); plt.grid(True); plt.tight_layout()
-            plt.savefig("mape_log_space_plot.png"); plt.show()
+            plt.show()
         else: print(f"Not enough data for log-space MAPE plot.")
     else: print(f"Log-space MAPE columns not found: train='{train_mape_log_col}', val='{val_mape_log_col}'")
 
@@ -126,7 +125,7 @@ def plot_training_validation_metrics(metrics_file_path):
             plt.plot(plot_df_val_mae[x_axis_col], plot_df_val_mae[val_mae_log_col], label='Validation MAE (Log-space)', linestyle='--')
             plt.xlabel(x_axis_col.capitalize()); plt.ylabel('MAE (Log-space)')
             plt.title('Training & Validation MAE (Log-Space) vs. Epoch'); plt.legend(); plt.grid(True); plt.tight_layout()
-            plt.savefig("mae_log_space_plot.png"); plt.show()
+            plt.show()
         else: print(f"Not enough data for log-space MAE plot.")
     else: print(f"Log-space MAE columns not found: train='{train_mae_log_col}', val='{val_mae_log_col}'")
         
@@ -138,7 +137,7 @@ def plot_training_validation_metrics(metrics_file_path):
             plt.plot(epoch_aligned_lr_df[x_axis_col], epoch_aligned_lr_df[lr_col], label='Learning Rate', marker='.', linestyle='-')
             plt.xlabel(x_axis_col.capitalize()); plt.ylabel('Learning Rate')
             plt.title('Learning Rate vs. ' + x_axis_col.capitalize()); plt.legend(); plt.grid(True); plt.tight_layout()
-            plt.savefig("lr_plot.png"); plt.show()
+            plt.show()
         else: 
             print(f"\nNo direct epoch-aligned LR data for '{lr_col}'. Attempting step-based plot.")
             if 'step' in metrics_df.columns:
@@ -147,7 +146,7 @@ def plot_training_validation_metrics(metrics_file_path):
                     plt.figure(figsize=(10, 6))
                     plt.plot(step_lr_df['step'], step_lr_df[lr_col], label='Learning Rate (vs. Step)', marker='.', linestyle='-')
                     plt.xlabel('Step'); plt.ylabel('Learning Rate'); plt.title('Learning Rate vs. Step')
-                    plt.legend(); plt.grid(True); plt.tight_layout(); plt.savefig("lr_vs_step_plot.png"); plt.show()
+                    plt.legend(); plt.grid(True); plt.tight_layout(); plt.show()
                 else: print(f"No non-NaN LR values with 'step' for '{lr_col}'.")
             else: print("The 'step' column not available for fallback LR plot.")
     else: print(f"Learning rate column (starting with 'lr-') not found: '{lr_col}'.")

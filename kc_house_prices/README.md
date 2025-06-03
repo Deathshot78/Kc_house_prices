@@ -16,7 +16,7 @@ A deep learning project that predicts King County house prices with only **12.4%
 
 ## 📌 Table of Contents
 
-- [� King County House Price Prediction with MLP \& Optuna Optimization](#-king-county-house-price-prediction-with-mlp--optuna-optimization)
+- [🏠 King County House Price Prediction with MLP \& Optuna Optimization](#-king-county-house-price-prediction-with-mlp--optuna-optimization)
   - [📌 Table of Contents](#-table-of-contents)
   - [🎯 Project Objective](#-project-objective)
   - [📂 Dataset](#-dataset)
@@ -160,8 +160,8 @@ Used **Optuna** with 100 trials to tune:
 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/kc-house-price-mlp.git
-cd kc-house-price-mlp
+git clone https://github.com/Deathshot78/Kc_house_prices.git
+cd Kc_house_prices
 ```
 
 2. Install dependencies
