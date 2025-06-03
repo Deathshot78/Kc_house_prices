@@ -1,0 +1,13 @@
+batch_size: 64
+dropout: 0.136
+hidden_units: 192
+input_shape: 98
+lr: 0.0002
+lr_scheduler_factor: 0.5
+lr_scheduler_patience: 4
+num_layers: 2
+num_workers: 4
+preprocessed_csv_path: projects/kc_house_prices/data/kc_house_data_preprocessed.csv
+random_state: 42
+target_column_name: price_log
+weight_decay: 0.0001
